@@ -1,10 +1,13 @@
 package com.example.gestionrecrutement.entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -12,12 +15,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "offre_entity")
 public class Offre {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
 	@SequenceGenerator(name = "sequenceGenerator")	
 	private long id;
-	
-	 @Column(name = "poste")
+
+
+	@OneToMany(mappedBy = "offre")
+    Set<Candidature> candidatures;
+
+	@Column(name = "poste")
 	 private String poste;
 	  
 	 @Column(name = "description")
@@ -39,12 +47,12 @@ public class Offre {
 	 
 	 @Column(name = "typeemploi")
 	 private String typeemploi;
-	  
+	
+	 
 	 public Offre() {
 			super();
 			
 		}
-	
 	public Offre(String poste, String description, String emplacement, String experience, String type, String niveau,
 			String typeemploi) {
 		super();
@@ -104,6 +112,7 @@ public class Offre {
 	public void setTypeemploi(String typeemploi) {
 		this.typeemploi = typeemploi;
 	}
+
 
 	@Override
 	public String toString() {

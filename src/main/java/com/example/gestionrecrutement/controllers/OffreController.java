@@ -24,7 +24,7 @@ import org.springframework.http.MediaType;
 
 @RestController //il s'agit d'une api rest
 @RequestMapping("/api/Offre") // pathe global o ki n3aytou fi postman n7otou pathe global+getmapping
-@CrossOrigin(origins = "http://localhost:8080") //pour indiquer domaine eli 7achti yekhdmou fih les requets piur acceder lel ressoureces taa les servers
+@CrossOrigin(origins = "*") //pour indiquer domaine eli 7achti yekhdmou fih les requets piur acceder lel ressoureces taa les servers
 public class OffreController {
    
 	private static final String FoundOffre = null;
